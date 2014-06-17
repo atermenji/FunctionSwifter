@@ -5,9 +5,7 @@
 //  Created by Artur Termenji on 6/12/14.
 //
 
-/**
-* This class provides an abstract wrapper for Swift function
-*/
+/// This class provides an abstract wrapper for Swift function
 class F<T1, T2> {
     
     let f: T1 -> T2
@@ -20,6 +18,7 @@ class F<T1, T2> {
         return f(args)
     }
     
+    /// Retry a function call multiple times
     func retry(args: T1, times: Int) -> T2 {
         for i in 1..times {
             f(args)
