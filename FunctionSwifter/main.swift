@@ -40,7 +40,7 @@ loggedRequest("http://some.awesome.url")
 println("\n=== Calling function several times ===\n")
 
 func greeting(firstName: String, lastName: String) {
-    print("Hello, " + firstName + " " + lastName + "! ")
+    print("Hello, " + firstName + " " + lastName + "!")
 }
 
 F(greeting).retry(("John", "Doe"), times: 3)

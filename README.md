@@ -31,7 +31,7 @@ logRequest("http://some.awesome.url") // => "LOG: Success 200"
 
 ```swift
 func greeting(firstName: String, lastName: String) {
-    print("Hello, " + firstName + " " + lastName + "! ")
+    print("Hello, " + firstName + " " + lastName + "!")
 }
 
 F(greeting).retry(("John", "Doe"), times: 3) // => Hello, John Doe! Hello, John Doe! Hello, John Doe!
