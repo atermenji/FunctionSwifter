@@ -27,14 +27,14 @@ let logRequest = F(request) + F(logger)
 logRequest("http://some.awesome.url") // => "LOG: Success 200"
 ```
 
-### Retrying functions
+### Repeating function calls
 
 ```swift
 func greeting(firstName: String, lastName: String) {
     print("Hello, " + firstName + " " + lastName + "!")
 }
 
-F(greeting).retry(("John", "Doe"), times: 3) // => Hello, John Doe! Hello, John Doe! Hello, John Doe!
+F(greeting).repeat(("John", "Doe"), times: 3) // => Hello, John Doe! Hello, John Doe! Hello, John Doe!
 ```
 ### Composing functions without '+' operator
 This repo also includes ```Swifter``` class which provides a way to compose functions without using ```+``` operator:

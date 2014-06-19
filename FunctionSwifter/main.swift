@@ -43,4 +43,6 @@ func greeting(firstName: String, lastName: String) {
     print("Hello, " + firstName + " " + lastName + "!")
 }
 
-F(greeting).retry(("John", "Doe"), times: 3)
+F(greeting).repeat(("John", "Doe"), times: 3)
+
+func 

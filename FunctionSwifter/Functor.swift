@@ -18,12 +18,23 @@ class F<T1, T2> {
         return f(args)
     }
     
-    /// Retry a function call multiple times
-    func retry(args: T1, times: Int) -> T2 {
+    /// Repeat a function call multiple times
+    func repeat(args: T1, times: Int) -> T2 {
         for i in 1..times {
             f(args)
         }
         return f(args)
+    }
+    
+    func retry(args: T1, maxTries: Int, condition: () -> Bool) -> T2 {
+        var tries = 0
+        var result: T2?
+        
+        while !condition() || tries == maxTries {
+            result = f(args)
+        }
+        
+        return result!
     }
 }
 
