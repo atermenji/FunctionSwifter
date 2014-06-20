@@ -26,12 +26,14 @@ class F<T1, T2> {
         return f(args)
     }
     
+    /// Retry a function call until condition is met or maxTries calls are performed
     func retry(args: T1, maxTries: Int, condition: () -> Bool) -> T2 {
         var tries = 0
         var result: T2?
         
-        while !condition() || tries == maxTries {
+        while !condition() && tries < maxTries {
             result = f(args)
+            tries++
         }
         
         return result!

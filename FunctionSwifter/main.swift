@@ -9,6 +9,8 @@
 * Usage sample
 */
 
+import Foundation
+
 func hello() {
     println("Hello, World!")
 }
@@ -45,4 +47,15 @@ func greeting(firstName: String, lastName: String) {
 
 F(greeting).repeat(("John", "Doe"), times: 3)
 
-func 
+var requestResult: Int = 0
+func randomRequest(url: String) {
+    let result = Int(arc4random_uniform(UInt32(2)))
+
+    if result > 0 {
+        requestResult = 200
+    } else {
+        requestResult = 404
+    }
+}
+
+F(randomRequest).retry("http://some.awesome.url", maxTries: 5, condition: { requestResult == 200 })
