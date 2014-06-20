@@ -36,6 +36,24 @@ func greeting(firstName: String, lastName: String) {
 
 F(greeting).repeat(("John", "Doe"), times: 3) // => Hello, John Doe! Hello, John Doe! Hello, John Doe!
 ```
+
+### Retrying function calls
+
+```swift
+var requestResult: Int = 0
+func randomRequest(url: String) {
+    let result = Int(arc4random_uniform(UInt32(2)))
+
+    if result > 0 {
+        requestResult = 200
+    } else {
+        requestResult = 404
+    }
+}
+
+F(randomRequest).retry("http://some.awesome.url", maxTries: 5, condition: { requestResult == 200 })
+```
+
 ### Composing functions without '+' operator
 This repo also includes ```Swifter``` class which provides a way to compose functions without using ```+``` operator:
 
